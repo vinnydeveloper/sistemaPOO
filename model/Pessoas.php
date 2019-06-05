@@ -7,6 +7,12 @@
        private $cpf;
 
 
+        function __construct($nome, $idade , $cpf){
+            $this->nome = $nome;
+            $this->idade = $idade;
+            $this->cpf = $cpf;
+        }
+
        public function getNome(){
            return $this->nome;
        }
@@ -14,7 +20,6 @@
        public function setNome($nome){
            $this->nome = $nome;
        }
-
 
        public function getIdade(){
            return $this->idade;
@@ -32,7 +37,18 @@
            $this->cpf = $cpf;
        }
 
-       public function cadastrarPessoa($con){
-            $this->nome;
+       public function cadastrarPessoa($con, $pessoa){
+            try{
+                $query = $con->prepare("INSERT INTO usuarios (nome, idade, cpf) VALUES(?,?,?)");
+                $query->execute([
+                    $pessoa->getNome(),
+                    $pessoa->getIdade(),
+                    $pessoa->getCpf()
+                ]);
+
+                return $query;
+            }catch(PDOException $e){
+                return false;
+            }
        }
     }
