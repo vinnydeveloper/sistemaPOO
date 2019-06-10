@@ -50,6 +50,7 @@ class PessoasController{
                         $salario
                     );
 
+
                     if($novoFuncionario->cadastrarPessoa($con,$novoFuncionario,$tipoPessoa)){
                         $_REQUEST['pessoa'] = $novoFuncionario;
 

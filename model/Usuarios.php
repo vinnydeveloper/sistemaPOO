@@ -20,7 +20,7 @@
        }
 
        public function getSenha(){
-           return $this->login;
+           return $this->senha;
        }
        public function setSenha($senha){
             $this->senha = $senha;

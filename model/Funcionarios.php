@@ -19,12 +19,12 @@
 
         public function cadastrarPessoa($con, $funcionario, $tipoPessoa){
             try{
-                $query = $con->prepare("INSERT INTO usuarios (nome, idade, cpf, usuario, senha, salario, tipo_pessoa) VALUES(:nome,:idade,:cpf,:login,:senha,:salario,:tipoPessoa)");
+                $query = $con->prepare("INSERT INTO usuarios (nome, idade, cpf, usuario, senha, salario, tipo_pessoa) VALUES(:nome,:idade,:cpf, :usuario , :senha,:salario,:tipoPessoa)");
                 $query->execute([
                     "nome"=>$funcionario->getNome(),
                     "idade"=>$funcionario->getIdade(),
                     "cpf"=>$funcionario->getCpf(),
-                    "login"=>$funcionario->getLogin(),
+                    "usuario"=>$funcionario->getLogin(),
                     "senha"=>$funcionario->getSenha(),
                     "salario"=>$funcionario->getSalario(),
                     "tipoPessoa"=>$tipoPessoa
